@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import Overlays from "@/components/Overlays";
 
 const space = Space_Grotesk({ variable: "--font-space", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"] });
@@ -10,11 +9,11 @@ const jet = JetBrains_Mono({ variable: "--font-jet", subsets: ["latin"], weight:
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://adityanarkar.dev"),
-  title: "Aditya Narkar — Full-stack Developer",
+  title: "Aditya Narkar - Full-stack Developer",
   description:
     "Aditya Narkar, full-stack developer in Mumbai. 2+ years building fast, scalable web experiences with React, Next.js, the MERN stack, and Shopify.",
   openGraph: {
-    title: "Aditya Narkar — Full-stack Developer",
+    title: "Aditya Narkar - Full-stack Developer",
     description: "Full-stack developer crafting high-performance interfaces across e-commerce and SaaS.",
     type: "website",
   },
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${space.variable} ${manrope.variable} ${jet.variable}`}>
       <body>
-        <Overlays />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

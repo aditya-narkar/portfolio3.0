@@ -1,0 +1,310 @@
+/* =============================================================
+   Cinematic Architect — Colors & Type
+   "Organic Brutalism" : rigid grid + soulful tonal range
+   ============================================================= */
+
+/* ---------- Webfonts (substituted from Google Fonts) ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ============================================================
+     COLOR — Core Palette
+     ============================================================ */
+
+  /* Brand */
+  --cherry-red:     #810100;  /* Primary  — focal points, CTAs */
+  --maroon:         #630000;  /* Secondary — depth, tonal richness */
+  --crimson-deep:   #4A0000;  /* Supporting — backgrounds, on-primary text */
+  --primary-fixed:  #A30202;  /* Hover / active brighter primary */
+
+  /* Neutrals */
+  --noir-black:     #1B1717;  /* Foundation surface */
+  --noir-deep:      #0F0C0C;  /* Inset / etched recess */
+  --noir-soft:      #161212;  /* Basal surface */
+  --cotton:         #EDEBDD;  /* High-legibility light */
+  --cotton-dim:     #C9C5B4;  /* Body de-emphasis on dark */
+  --cotton-faint:   #8A8676;  /* Tertiary / variant text */
+  --paper:          #F5F2E5;  /* Hard-block contrast (rarely used) */
+
+  /* ============================================================
+     COLOR — Material-style Surface Tiers
+     The UI is a physical stack of materials.
+     Tiers go: lowest (etched) → highest (raised)
+     ============================================================ */
+  --surface:                   var(--noir-soft);    /* basal */
+  --surface-dim:               #100D0D;
+  --surface-bright:            #2A2424;
+  --surface-container-lowest:  #0B0808;
+  --surface-container-low:     #1F1A1A;
+  --surface-container:         #251F1F;
+  --surface-container-high:    #2D2626;
+  --surface-container-highest: #362E2E;
+
+  /* On-Surface text colors */
+  --on-surface:          var(--cotton);
+  --on-surface-variant:  var(--cotton-dim);
+  --on-surface-muted:    var(--cotton-faint);
+  --on-primary:          var(--cotton);
+  --on-primary-deep:     #690100;     /* per spec — text-on-primary in print contexts */
+
+  /* Outline (used at low opacity — never as a 1px sectioning border) */
+  --outline:          rgba(237, 235, 221, 0.30);
+  --outline-variant:  rgba(237, 235, 221, 0.15);
+
+  /* Accents that sit alongside cherry without competing */
+  --accent-rust:    #C24A1F;   /* secondary highlight, used sparingly */
+  --accent-bone:    #BFB89E;   /* muted tertiary marker */
+
+  /* ============================================================
+     SEMANTIC ALIASES
+     ============================================================ */
+  --bg:           var(--surface);
+  --bg-elevated:  var(--surface-container-high);
+  --fg1:          var(--on-surface);          /* primary text */
+  --fg2:          var(--on-surface-variant);  /* secondary text */
+  --fg3:          var(--on-surface-muted);    /* tertiary text */
+  --accent:       var(--cherry-red);
+  --accent-hover: var(--primary-fixed);
+  --link:         var(--cherry-red);
+
+  /* Status (muted to fit palette — never neon) */
+  --status-success: #5C7A4B;
+  --status-warning: #B8843D;
+  --status-error:   var(--cherry-red);
+  --status-info:    var(--cotton-dim);
+
+  /* ============================================================
+     TYPE — Families
+     ============================================================ */
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;  /* Structural voice */
+  --font-body:    "Manrope", system-ui, sans-serif;                  /* Functional voice */
+  --font-mono:    "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  /* TYPE — Scale (editorial, high-contrast)
+     Display → Body uses an aggressive 1.333 ratio that opens up at the top.
+     Use display-* for hero statements that bleed off-grid. */
+  --display-2xl: 7.5rem;   /* 120px — hero takeover */
+  --display-xl:  5.25rem;  /*  84px */
+  --display-lg:  3.5rem;   /*  56px — per spec */
+  --display-md:  2.75rem;  /*  44px */
+  --display-sm:  2.25rem;  /*  36px */
+
+  --headline-lg: 2rem;       /* 32px */
+  --headline-md: 1.625rem;   /* 26px */
+  --headline-sm: 1.25rem;    /* 20px */
+
+  --title-lg:    1.125rem;   /* 18px */
+  --title-md:    1rem;       /* 16px */
+  --title-sm:    0.875rem;   /* 14px */
+
+  --body-lg:     1.0625rem;  /* 17px */
+  --body-md:     1rem;       /* 16px */
+  --body-sm:     0.875rem;   /* 14px */
+
+  --label-lg:    0.875rem;   /* 14px */
+  --label-md:    0.75rem;    /* 12px */
+  --label-sm:    0.6875rem;  /* 11px */
+
+  /* TYPE — Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* TYPE — Line heights */
+  --leading-tight:   1.05;  /* display */
+  --leading-snug:    1.2;   /* headline */
+  --leading-normal:  1.45;  /* body */
+  --leading-relaxed: 1.6;   /* long-form */
+
+  /* TYPE — Tracking */
+  --tracking-display: -0.02em;  /* tighter on the bigs */
+  --tracking-tight:   -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-label:   0.1em;    /* uppercase tertiary buttons / eyebrows */
+
+  /* ============================================================
+     SPACING — 4px base, 8-step rhythm
+     ============================================================ */
+  --space-1:  0.25rem;   /*  4 */
+  --space-2:  0.5rem;    /*  8 */
+  --space-3:  0.75rem;   /* 12 */
+  --space-4:  1rem;      /* 16 */
+  --space-5:  1.25rem;   /* 20 */
+  --space-6:  1.5rem;    /* 24 */
+  --space-8:  2rem;      /* 32 — list-item separator (Divider Ban) */
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;      /* hero negative space */
+
+  /* ============================================================
+     RADII — Sharp Edges (per spec, all 0)
+     ============================================================ */
+  --radius-none: 0;
+  --radius-xs:   0;
+  --radius-sm:   0;
+  --radius-md:   0;
+  --radius-lg:   0;
+  --radius-xl:   0;
+  --radius-full: 9999px;  /* exception: avatars / status dots */
+
+  /* ============================================================
+     ELEVATION — Tonal Layering, not shadow
+     Shadows reserved only for floating context menus.
+     ============================================================ */
+  --elev-0: none;
+  --elev-1: none;  /* use surface-container-low instead */
+  --elev-2: none;  /* use surface-container instead */
+  --elev-soft-glow:    0 0 30px 0 rgba(237, 235, 221, 0.04);  /* "Soft Glow" */
+  --elev-cherry-bleed: 0 1px 0 0 rgba(129, 1, 0, 0.0),
+                        0 30px 60px -20px rgba(129, 1, 0, 0.45);  /* card hover bleed */
+
+  /* ============================================================
+     EFFECTS — Glass & Gradient
+     ============================================================ */
+  --glass-blur:  blur(16px);        /* @kind other */
+  --glass-blur-strong: blur(20px);  /* @kind other */
+  --glass-bg:    rgba(22, 18, 18, 0.72);
+  --gradient-cherry-sheen: radial-gradient(
+    120% 80% at 30% 20%,
+    #A30202 0%,
+    #810100 40%,
+    #4A0000 100%
+  );  /* @kind color */
+  --gradient-noir-vignette: radial-gradient(
+    100% 60% at 50% 0%,
+    #2A2424 0%,
+    #161212 70%
+  );  /* @kind color */
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-architect: cubic-bezier(0.2, 0.7, 0.1, 1);  /* @kind other */
+  --ease-precise:   cubic-bezier(0.4, 0, 0.2, 1);    /* @kind other */
+  --dur-fast:   140ms;  /* @kind other */
+  --dur-base:   220ms;  /* @kind other */
+  --dur-slow:   420ms;  /* @kind other */
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  --grid-columns: 12;  /* @kind other */
+  --grid-gutter: var(--space-6);
+  --container-max: 1440px;
+  --container-pad: var(--space-12);
+}
+
+/* =============================================================
+   BASE — semantic element styles
+   ============================================================= */
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--fg1);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  line-height: var(--leading-normal);
+  color: var(--fg1);
+  background: var(--bg);
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--display-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  margin: 0 0 var(--space-6);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--headline-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-5);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: var(--headline-md);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-4);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-size: var(--headline-sm);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  margin: 0 0 var(--space-3);
+}
+
+p, .p {
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  line-height: var(--leading-relaxed);
+  color: var(--fg2);
+  margin: 0 0 var(--space-4);
+  max-width: 62ch;
+}
+
+small, .small {
+  font-size: var(--body-sm);
+  color: var(--fg3);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-fast) var(--ease-precise),
+              border-color var(--dur-fast) var(--ease-precise);
+}
+a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: currentColor;
+}
+
+code, pre, kbd {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* Eyebrow / overline — the signature label-md style */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--label-md);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+
+/* Display utilities for hero statements that bleed off-grid */
+.display-2xl { font-family: var(--font-display); font-size: var(--display-2xl); font-weight: 700; line-height: var(--leading-tight); letter-spacing: var(--tracking-display); }
+.display-xl  { font-family: var(--font-display); font-size: var(--display-xl);  font-weight: 700; line-height: var(--leading-tight); letter-spacing: var(--tracking-display); }
+.display-lg  { font-family: var(--font-display); font-size: var(--display-lg);  font-weight: 700; line-height: var(--leading-tight); letter-spacing: var(--tracking-display); }
+
+/* Selection — cherry on noir */
+::selection {
+  background: var(--cherry-red);
+  color: var(--cotton);
+}

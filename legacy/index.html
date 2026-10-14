@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aditya Narkar — Full-stack Developer</title>
+<meta name="description" content="Aditya Narkar — full-stack developer in Mumbai. 2+ years building fast, scalable web experiences with React, Next.js, the MERN stack and Shopify.">
+<meta property="og:title" content="Aditya Narkar — Full-stack Developer">
+<meta property="og:description" content="Full-stack developer crafting high-performance interfaces across e-commerce and SaaS.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23810100'/%3E%3Ctext x='16' y='22' font-family='Space Grotesk,Arial,sans-serif' font-size='16' font-weight='700' fill='%23EDEBDD' text-anchor='middle'%3EAN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="an-root">
+
+  <div id="grain" aria-hidden="true"></div>
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- LOADER -->
+  <div id="loader" style="position: fixed; inset: 0; z-index: 1000; background: var(--noir-deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-8); padding: var(--space-8);">
+    <div style="display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: var(--gradient-cherry-sheen); color: var(--cotton); font-family: var(--font-display); font-weight: 700; font-size: 30px; box-shadow: var(--elev-soft-glow); animation: loaderMono 1.1s var(--ease-architect) infinite alternate;">AN</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-5); width: min(260px, 70vw);">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; width: 100%; font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; color: var(--cotton-faint);">
+        <span>LOADING PORTFOLIO</span>
+        <span id="loader-num" style="color: var(--cherry-red);">000</span>
+      </div>
+      <div style="width: 100%; height: 2px; background: var(--surface-container-high); overflow: hidden;"><div id="loader-bar" style="width: 100%; height: 100%; background: var(--cherry-red);"></div></div>
+    </div>
+  </div>
+
+  <div id="top-progress"></div>
+
+  <!-- SCROLL RAIL -->
+  <aside class="scroll-rail">
+    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--cotton-faint); letter-spacing: .1em; writing-mode: vertical-rl;" id="rail-label">INTRO</span>
+    <div id="rail-track"><div id="rail-bar"></div></div>
+    <span style="font-family: var(--font-mono); font-size: 12px; color: var(--cherry-red); letter-spacing: .05em;"><span id="rail-idx">01</span><span style="color: var(--cotton-faint);"> / 06</span></span>
+  </aside>
+
+  <!-- NAV -->
+  <nav id="nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 150; display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding: 16px clamp(20px, 5vw, 72px); background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--elev-soft-glow);">
+    <a href="#top" style="display: flex; align-items: center; gap: 12px; border: 0;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; background: var(--gradient-cherry-sheen); color: var(--cotton); font-family: var(--font-display); font-weight: 700; font-size: 15px; box-shadow: var(--elev-soft-glow);">AN</span>
+      <span class="nav-wordmark" style="font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--cotton); letter-spacing: -0.01em;">Aditya Narkar</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: clamp(14px, 2.4vw, 30px); font-size: 13px; font-weight: 500;">
+      <a href="#work" class="nav-link">Work</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <span style="display: inline-flex; align-items: center; gap: 8px; color: var(--cotton-dim); font-family: var(--font-mono); font-size: 11px; letter-spacing: .05em;">
+        <span style="width: 7px; height: 7px; border-radius: var(--radius-full); background: var(--status-success); box-shadow: 0 0 10px var(--status-success);"></span>AVAILABLE
+      </span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="top" data-section data-label="INTRO" style="scroll-margin-top: 80px; position: relative; min-height: 100vh; min-height: 100dvh; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: clamp(100px, 13vh, 128px) clamp(20px, 5vw, 96px) clamp(44px, 7vh, 72px); max-width: 1500px; margin: 0 auto; background: var(--gradient-noir-vignette);">
+    <div id="hero-glow"></div>
+    <span id="hero-dev" class="ghost" aria-hidden="true" style="position: absolute; top: 16%; right: -2%; font-size: clamp(4.5rem, 17vw, 17rem); line-height: .8; z-index: 0; letter-spacing: -0.03em; transition: transform .5s var(--ease-architect); will-change: transform;">DEV</span>
+    <div id="hero-inner">
+      <div data-reveal class="in" style="position: relative; z-index: 2;">
+        <p class="eyebrow" style="margin-bottom: var(--space-5); display: flex; align-items: center; gap: 14px;"><span style="width: 36px; height: 1px; background: var(--cherry-red); display: inline-block;"></span>Full-stack developer — Mumbai, India</p>
+        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.3rem, 6.4vw, 5.5rem); line-height: 1.0; letter-spacing: -0.03em; margin: 0 0 var(--space-7); color: var(--cotton);">
+          <span class="line-mask" style="transition-delay: .05s;"><span>I build fast,</span></span>
+          <span class="line-mask" style="transition-delay: .18s;"><span>scalable web</span></span>
+          <span class="line-mask" style="transition-delay: .31s;"><span>experiences <span style="color: var(--cherry-red);">—</span></span></span>
+          <span class="line-mask" style="transition-delay: .44s;"><span style="color: var(--cherry-red);">front to back.</span></span>
+        </h1>
+      </div>
+      <div data-reveal style="transition-delay: .5s; position: relative; z-index: 2; max-width: 56ch;">
+        <p style="font-size: clamp(0.95rem, 1.4vw, var(--body-lg)); color: var(--cotton-dim); margin: 0 0 var(--space-6); line-height: var(--leading-relaxed); max-width: 52ch;">A developer with 2+ years crafting high-performance interfaces across e-commerce and SaaS — React, Next.js, and the MERN stack, with deep Shopify customization.</p>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--cotton-faint); letter-spacing: .06em; margin-bottom: var(--space-6);">$ open_to: full-time &amp; freelance<span class="caret"></span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+          <a class="btn btn-primary" href="#work">View selected work</a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+    <div style="position: absolute; bottom: clamp(28px, 5vw, 52px); left: clamp(20px, 5vw, 96px); display: flex; align-items: center; gap: 12px; color: var(--cotton-faint); font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em;">
+      <span style="display: inline-block; width: 1px; height: 28px; background: var(--cherry-red);"></span>SCROLL
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" style="padding: var(--space-6) 0; background: var(--surface-container-lowest); overflow: hidden; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(129,1,0,.4), inset 0 -1px 0 rgba(129,1,0,.4);">
+    <div class="marquee-track" style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.6rem); letter-spacing: -0.01em; color: var(--cotton);">
+      <span>React.js<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Next.js</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>TypeScript<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Node.js</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>MongoDB<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Shopify</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>Liquid<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Redux</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>Tailwind<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i></span>
+      <span aria-hidden="true">React.js<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Next.js</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>TypeScript<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Node.js</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>MongoDB<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Shopify</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>Liquid<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i><span class="mq-ghost">Redux</span><i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i>Tailwind<i style="color: var(--cherry-red); font-style: normal; padding: 0 22px;">✦</i></span>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work" data-section data-label="WORK" style="scroll-margin-top: 70px; position: relative; padding: clamp(80px, 12vw, 150px) clamp(20px, 5vw, 96px); max-width: 1500px; margin: 0 auto;">
+    <span data-parallax="0.08" class="ghost" aria-hidden="true" style="position: absolute; top: 4%; left: -1%; font-size: clamp(6rem, 22vw, 22rem); z-index: 0;">01</span>
+    <div data-reveal style="position: relative; z-index: 2; display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; margin-bottom: clamp(48px, 7vw, 90px);">
+      <div>
+        <span class="eyebrow">01 — Selected work</span>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 5vw, var(--display-md)); letter-spacing: -0.02em; line-height: 1.02; margin: var(--space-4) 0 0;">Things I've built<br>and shipped.</h2>
+        <span class="title-rule"></span>
+      </div>
+      <span style="font-family: var(--font-mono); font-size: 12px; color: var(--cotton-faint); letter-spacing: .05em;">2023 — PRESENT</span>
+    </div>
+
+    <!-- Featured -->
+    <article data-reveal data-countgroup style="position: relative; z-index: 2; background: var(--surface-container-low); padding: clamp(28px, 4vw, 60px); margin-bottom: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px);">
+      <div>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: var(--space-6);">
+          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--cherry-red);">01</span>
+          <span style="font-family: var(--font-mono); font-size: 11px; color: var(--cotton-faint); letter-spacing: .06em; text-transform: uppercase;">Fintech · Frontend · Featured</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 4vw, var(--display-sm)); letter-spacing: -0.02em; margin: 0 0 var(--space-5);">Startup Investment Platform</h3>
+        <p style="color: var(--cotton-dim); margin: 0 0 var(--space-8); line-height: var(--leading-relaxed); max-width: 54ch;">A fully responsive frontend for a startup investment platform, built in React and Redux. Transformed Figma designs into a dynamic, high-performance interface with real-time data through integrated RESTful APIs.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--space-8);">
+          <span class="tag">React.js</span>
+          <span class="tag">Redux</span>
+          <span class="tag">RESTful APIs</span>
+          <span class="tag">Figma</span>
+        </div>
+        <a href="https://bizdateup.com" target="_blank" rel="noopener" class="visit-link" style="font-family: var(--font-mono); font-size: 12px; letter-spacing: .05em;">bizdateup.com ↗</a>
+      </div>
+      <div style="display: flex; flex-direction: column; justify-content: center; gap: var(--space-10); box-shadow: inset 3px 0 0 0 var(--cherry-red); background: var(--surface-container-lowest); padding: clamp(24px, 3vw, 44px);">
+        <div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 5vw, 3.4rem); color: var(--cotton); line-height: 1;"><span data-count="25" data-prefix="+" data-suffix="%">+0%</span></div>
+          <div style="font-size: 12px; color: var(--cotton-faint); margin-top: 8px; letter-spacing: .03em; text-transform: uppercase;">User engagement</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 5vw, 3.4rem); color: var(--cotton); line-height: 1;"><span data-count="30" data-prefix="+" data-suffix="%">+0%</span></div>
+          <div style="font-size: 12px; color: var(--cotton-faint); margin-top: 8px; letter-spacing: .03em; text-transform: uppercase;">Data efficiency</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Editorial rows -->
+    <div style="position: relative; z-index: 2;">
+      <a href="https://lafitlighting.com" target="_blank" rel="noopener" class="proj-row" data-reveal>
+        <span class="rownum">02</span>
+        <div style="min-width: 0;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--cotton-faint); letter-spacing: .06em; text-transform: uppercase; margin-bottom: var(--space-3);">E-commerce · Shopify · 3D product viewer</div>
+          <h3 class="proj-title" style="font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 3vw, var(--headline-lg)); letter-spacing: -0.01em; margin: 0 0 var(--space-4); color: var(--cotton);">Lafit Lightings</h3>
+          <p style="color: var(--cotton-dim); font-size: var(--body-sm); margin: 0 0 var(--space-5); line-height: var(--leading-relaxed); max-width: 64ch;">Redesigned and rebuilt a modern Shopify store with interactive 3D product models, refined UI/UX, and optimized structure for speed and stability.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="tag">Shopify</span><span class="tag">Liquid</span><span class="tag">JavaScript</span><span class="tag">3D Models</span>
+          </div>
+        </div>
+        <span class="proj-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a href="https://thebarcollective.com" target="_blank" rel="noopener" class="proj-row" data-reveal>
+        <span class="rownum">03</span>
+        <div style="min-width: 0;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--cotton-faint); letter-spacing: .06em; text-transform: uppercase; margin-bottom: var(--space-3);">E-commerce · Shopify · 20% faster loads</div>
+          <h3 class="proj-title" style="font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 3vw, var(--headline-lg)); letter-spacing: -0.01em; margin: 0 0 var(--space-4); color: var(--cotton);">The Bar Collective</h3>
+          <p style="color: var(--cotton-dim); font-size: var(--body-sm); margin: 0 0 var(--space-5); line-height: var(--leading-relaxed); max-width: 64ch;">A luxury-focused Shopify build with refined UI animations and visual storytelling, plus a custom product-catalog generator for personalized catalogs.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="tag">Shopify</span><span class="tag">Liquid</span><span class="tag">Performance</span>
+          </div>
+        </div>
+        <span class="proj-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a href="https://thedermahouse.com" target="_blank" rel="noopener" class="proj-row" data-reveal>
+        <span class="rownum">04</span>
+        <div style="min-width: 0;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--cotton-faint); letter-spacing: .06em; text-transform: uppercase; margin-bottom: var(--space-3);">Web · Next.js + CMS · Custom CMS · SEO-first</div>
+          <h3 class="proj-title" style="font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 3vw, var(--headline-lg)); letter-spacing: -0.01em; margin: 0 0 var(--space-4); color: var(--cotton);">DermaHouse CMS</h3>
+          <p style="color: var(--cotton-dim); font-size: var(--body-sm); margin: 0 0 var(--space-5); line-height: var(--leading-relaxed); max-width: 64ch;">A fast, SEO-friendly site built on Next.js with a custom CMS admin panel, secure backend structure, and optimized frontend for reliability at scale.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">Custom CMS</span><span class="tag">SEO</span>
+          </div>
+        </div>
+        <span class="proj-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" data-section data-label="WORK HISTORY" style="scroll-margin-top: 70px; position: relative; padding: clamp(80px, 12vw, 150px) clamp(20px, 5vw, 96px); max-width: 1500px; margin: 0 auto;">
+    <span data-parallax="0.08" class="ghost" aria-hidden="true" style="position: absolute; top: 4%; right: -1%; font-size: clamp(6rem, 22vw, 22rem); z-index: 0;">02</span>
+    <div data-reveal style="position: relative; z-index: 2; margin-bottom: clamp(48px, 7vw, 90px);">
+      <span class="eyebrow">02 — Experience</span>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 5vw, var(--display-md)); letter-spacing: -0.02em; margin: var(--space-4) 0 0;">Where I've worked.</h2>
+      <span class="title-rule"></span>
+    </div>
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: clamp(40px, 6vw, 80px);">
+      <div class="exp-grid" data-reveal style="display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr); gap: clamp(24px, 4vw, 72px);">
+        <div class="exp-meta" style="position: sticky; top: 100px; align-self: start; background: var(--surface-container-low); padding: var(--space-8);">
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--cherry-red); letter-spacing: .04em; margin-bottom: var(--space-5);">SEP 2024 — PRESENT</div>
+          <h3 style="font-family: var(--font-display); font-weight: 700; font-size: var(--headline-md); letter-spacing: -0.01em; margin: 0 0 var(--space-3);">Web Developer</h3>
+          <div style="color: var(--cotton-dim); font-size: var(--body-sm); font-weight: 600;">The Works</div>
+          <div style="color: var(--cotton-faint); font-size: var(--body-sm); margin-top: 4px;">Mumbai, India</div>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-6);">
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Build and maintain client projects across React.js, Next.js, Node.js, PHP, and Shopify — keeping code clean, scalable, and maintainable across diverse stacks.</span></li>
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Ship responsive, high-performance interfaces and custom Shopify features in Liquid, improving user engagement and streamlining e-commerce functionality.</span></li>
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Optimize performance, stability, and SEO across Shopify and PHP platforms for measurable gains in load times and search rankings.</span></li>
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Partner with design and backend teams to resolve issues, deliver features, and ensure smooth, high-quality deployments.</span></li>
+        </ul>
+      </div>
+      <div class="exp-grid" data-reveal style="display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr); gap: clamp(24px, 4vw, 72px);">
+        <div class="exp-meta" style="position: sticky; top: 100px; align-self: start; background: var(--surface-container-low); padding: var(--space-8);">
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--cherry-red); letter-spacing: .04em; margin-bottom: var(--space-5);">FEB 2023 — AUG 2024</div>
+          <h3 style="font-family: var(--font-display); font-weight: 700; font-size: var(--headline-md); letter-spacing: -0.01em; margin: 0 0 var(--space-3);">Junior Developer</h3>
+          <div style="color: var(--cotton-dim); font-size: var(--body-sm); font-weight: 600;">Bizdateup Technologies</div>
+          <div style="color: var(--cotton-faint); font-size: var(--body-sm); margin-top: 4px;">Mumbai, India</div>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-6);">
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Developed responsive web apps in React.js, JavaScript, and Redux, delivering intuitive interfaces that lifted user satisfaction.</span></li>
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Translated Figma designs into dynamic React frontends for an investment platform — a 25% improvement in engagement metrics.</span></li>
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Implemented and optimized RESTful APIs for real-time updates, raising data-handling efficiency by 30%.</span></li>
+          <li style="display: flex; gap: var(--space-4); color: var(--cotton-dim); line-height: var(--leading-relaxed); font-size: var(--body-md);"><span style="color: var(--cherry-red); font-family: var(--font-mono); flex-shrink: 0; font-size: 13px; padding-top: 5px;">→</span><span>Used Git for version control and upheld code quality through thorough testing, debugging, and best practices.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" data-section data-label="STACK" style="scroll-margin-top: 70px; position: relative; padding: clamp(60px, 9vw, 120px) clamp(20px, 5vw, 96px); max-width: 1500px; margin: 0 auto;">
+    <div data-reveal style="margin-bottom: clamp(40px, 6vw, 70px);">
+      <span class="eyebrow">03 — Capabilities</span>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 5vw, var(--display-md)); letter-spacing: -0.02em; margin: var(--space-4) 0 0;">The stack I work in.</h2>
+      <span class="title-rule"></span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-8);">
+      <div data-reveal style="background: var(--surface-container-low); padding: var(--space-8); min-height: 200px;">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--cherry-red); letter-spacing: .06em; text-transform: uppercase; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 10px;"><span style="width: 20px; height: 1px; background: var(--cherry-red);"></span>Frontend</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Redux</span><span class="tag">Recoil</span><span class="tag">TypeScript</span><span class="tag">JavaScript (ES6+)</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Tailwind CSS</span><span class="tag">React Native</span><span class="tag">Responsive Design</span>
+        </div>
+      </div>
+      <div data-reveal style="background: var(--surface-container-low); padding: var(--space-8); min-height: 200px;">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--cherry-red); letter-spacing: .06em; text-transform: uppercase; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 10px;"><span style="width: 20px; height: 1px; background: var(--cherry-red);"></span>Backend</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">RESTful APIs</span><span class="tag">MongoDB</span><span class="tag">PHP</span>
+        </div>
+      </div>
+      <div data-reveal style="background: var(--surface-container-low); padding: var(--space-8); min-height: 200px;">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--cherry-red); letter-spacing: .06em; text-transform: uppercase; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 10px;"><span style="width: 20px; height: 1px; background: var(--cherry-red);"></span>Platforms &amp; Tools</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <span class="tag">Shopify</span><span class="tag">Liquid</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">SEO Optimization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + stats -->
+  <section id="about" data-section data-label="ABOUT" style="scroll-margin-top: 70px; position: relative; padding: clamp(60px, 9vw, 120px) clamp(20px, 5vw, 96px); max-width: 1500px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(32px, 6vw, 96px); align-items: start;">
+      <div data-reveal>
+        <span class="eyebrow">04 — About</span>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem, 4vw, var(--display-sm)); letter-spacing: -0.02em; line-height: 1.05; margin: var(--space-4) 0 var(--space-8); max-width: 16ch;">A frontend-leaning full-stack developer.</h2>
+        <span class="title-rule"></span>
+        <p style="color: var(--cotton-dim); line-height: var(--leading-relaxed); margin-bottom: var(--space-5);">I build dynamic, responsive web applications end to end — from React and Next.js interfaces to Node and Express APIs. Most of my work lives where e-commerce and SaaS meet, where performance and clean UX decide whether a product succeeds.</p>
+        <p style="color: var(--cotton-dim); line-height: var(--leading-relaxed);">I care about measurable outcomes: faster load times, higher engagement, maintainable code. I translate Figma into pixel-accurate frontends, customize Shopify with Liquid, and optimize for SEO and stability across diverse stacks.</p>
+      </div>
+      <div data-reveal data-countgroup style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--surface-container-highest);">
+        <div style="background: var(--surface-container-lowest); padding: clamp(24px, 3vw, 40px);">
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--cherry-red); line-height: 1;"><span data-count="2" data-suffix="+">0+</span></div>
+          <div style="font-size: 11px; color: var(--cotton-faint); margin-top: 10px; letter-spacing: .08em; text-transform: uppercase;">Years experience</div>
+        </div>
+        <div style="background: var(--surface-container-lowest); padding: clamp(24px, 3vw, 40px);">
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--cotton); line-height: 1;"><span data-count="4">0</span></div>
+          <div style="font-size: 11px; color: var(--cotton-faint); margin-top: 10px; letter-spacing: .08em; text-transform: uppercase;">Products shipped</div>
+        </div>
+        <div style="background: var(--surface-container-lowest); padding: clamp(24px, 3vw, 40px);">
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--cotton); line-height: 1;"><span data-count="30" data-suffix="%">0%</span></div>
+          <div style="font-size: 11px; color: var(--cotton-faint); margin-top: 10px; letter-spacing: .08em; text-transform: uppercase;">Perf gains</div>
+        </div>
+        <div style="background: var(--surface-container-lowest); padding: clamp(24px, 3vw, 40px);">
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--cherry-red); line-height: 1;"><span data-count="2">0</span></div>
+          <div style="font-size: 11px; color: var(--cotton-faint); margin-top: 10px; letter-spacing: .08em; text-transform: uppercase;">Companies</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- education -->
+    <div data-reveal style="margin-top: clamp(40px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr); gap: clamp(20px, 4vw, 64px); align-items: center; background: var(--surface-container-low); padding: clamp(28px, 4vw, 48px);">
+      <span class="eyebrow">05 — Education</span>
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap;">
+        <div>
+          <h3 style="font-family: var(--font-display); font-weight: 700; font-size: var(--headline-md); letter-spacing: -0.01em; margin: 0 0 var(--space-2);">B.Sc. in Computer Science</h3>
+          <div style="color: var(--cotton-dim);">Ismail Yusuf College — Mumbai, India</div>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 12px; color: var(--cherry-red); letter-spacing: .04em; white-space: nowrap;">AUG 2018 — MAY 2021</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-section data-label="CONTACT" style="scroll-margin-top: 70px; position: relative; padding: clamp(90px, 13vw, 170px) clamp(20px, 5vw, 96px); max-width: 1500px; margin: 0 auto;">
+    <span data-parallax="0.1" class="ghost" aria-hidden="true" style="position: absolute; top: 0; left: -1%; font-size: clamp(6rem, 22vw, 22rem); z-index: 0;">06</span>
+    <div data-reveal style="position: relative; z-index: 2;">
+      <span class="eyebrow">06 — Contact</span>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 9vw, var(--display-xl)); letter-spacing: -0.03em; line-height: .98; margin: var(--space-6) 0 var(--space-10); max-width: 13ch;">Let's build<br>something <span style="color: var(--cherry-red);">together.</span></h2>
+      <span class="title-rule"></span>
+      <p style="color: var(--cotton-dim); max-width: 48ch; margin: 0 0 var(--space-10); line-height: var(--leading-relaxed);">Open to full-time opportunities and freelance projects. Tell me about what you're working on — I usually reply within a day.</p>
+      <a href="mailto:narkaraditya04@gmail.com" class="big-email" style="font-size: clamp(1.5rem, 5vw, 3.4rem); margin-bottom: var(--space-10);">narkaraditya04@gmail.com</a>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); margin: var(--space-10) 0 var(--space-16);">
+        <a class="btn btn-premium" href="mailto:narkaraditya04@gmail.com">Send a message</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/adityanarkar20/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-secondary" href="https://github.com/narkaraditya10" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-secondary" href="assets/Aditya-Narkar-Resume.docx" download>Résumé ↓</a>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 56px); font-family: var(--font-mono); font-size: 12px; color: var(--cotton-faint); letter-spacing: .04em;">
+        <span>BASED IN MUMBAI, INDIA</span>
+        <span><span style="color: var(--status-success);">●</span> OPEN TO WORK &amp; FREELANCE</span>
+        <span>+91 86526 83750</span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: var(--space-10) clamp(20px, 5vw, 96px); max-width: 1500px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; background: var(--noir-deep);">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--gradient-cherry-sheen); color: var(--cotton); font-family: var(--font-display); font-weight: 700; font-size: 12px;">AN</span>
+      <span style="font-family: var(--font-mono); font-size: 12px; color: var(--cotton-faint);">© <span id="year"></span> Aditya Narkar</span>
+    </div>
+    <a href="#top" class="visit-link" style="font-family: var(--font-mono); font-size: 12px; letter-spacing: .05em;">BACK TO TOP ↑</a>
+  </footer>
+
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

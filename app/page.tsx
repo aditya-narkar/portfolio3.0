@@ -10,7 +10,7 @@ import { projects, skills, experience, stats } from "@/lib/data";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 // one marquee "half": the stack repeated enough that it always exceeds the viewport width (seamless loop)
-const MARQUEE = "React · Next.js · TypeScript · Node · MongoDB · Shopify · Liquid · Redux · Tailwind · ".repeat(3);
+const MARQUEE = "React · Next.js · TypeScript · Node · MongoDB · PHP · Symfony · Shopify · Liquid · Redux · Tailwind · ".repeat(3);
 
 const LINKS: [string, string][] = [["Work", "#work"], ["Experience", "#experience"], ["Contact", "#contact"]];
 
@@ -143,7 +143,7 @@ export default function V3() {
         </h1>
         <div className="v3-hero-foot">
           <motion.p className="v3-lead" {...enter(reduce, 0.4)}>
-            Two years turning Figma into fast, scalable products across e-commerce and SaaS. React, Next.js, the MERN stack, and deep Shopify work.
+            Two years turning Figma into fast, scalable products across e-commerce and SaaS. React, Next.js, and the MERN stack on the front, Node, PHP, and Symfony on the back, plus deep Shopify work.
           </motion.p>
           <RotatingBadge />
         </div>
@@ -164,14 +164,21 @@ export default function V3() {
           <motion.span className="v3-count" {...reveal(reduce, 0.1)}>({projects.length})</motion.span>
         </div>
         <div className="v3-list" onPointerMove={onListMove} onPointerLeave={() => setHovered(null)}>
-          {projects.map((p, i) => (
-            <a key={p.num} href={p.url} target="_blank" rel="noopener" className="v3-row" onPointerEnter={() => setHovered(i)}>
-              <span className="v3-row-num">{p.num}</span>
-              <span className="v3-row-title">{p.title}</span>
-              <span className="v3-row-kind">{p.kind}</span>
-              <span className="v3-row-arrow" aria-hidden>↗</span>
-            </a>
-          ))}
+          {projects.map((p, i) => {
+            const inner = (
+              <>
+                <span className="v3-row-num">{p.num}</span>
+                <span className="v3-row-title">{p.title}</span>
+                <span className="v3-row-kind">{p.context} · {p.kind}</span>
+                <span className="v3-row-arrow" aria-hidden>{p.url ? "↗" : ""}</span>
+              </>
+            );
+            return p.url ? (
+              <a key={p.num} href={p.url} target="_blank" rel="noopener" className="v3-row" onPointerEnter={() => setHovered(i)}>{inner}</a>
+            ) : (
+              <div key={p.num} className="v3-row" onPointerEnter={() => setHovered(i)}>{inner}</div>
+            );
+          })}
           <motion.div className="v3-preview" style={{ x: sx, y: sy, opacity: hovered !== null && !reduce ? 1 : 0 }} aria-hidden>
             {hovered !== null && (
               /* eslint-disable-next-line @next/next/no-img-element */

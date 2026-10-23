@@ -4,7 +4,7 @@
    Self-contained: own theme vars + styles, does not touch the live dark site. */
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useMotionValue, useSpring, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useInView, useMotionValue, useSpring, useReducedMotion } from "motion/react";
 import { projects, skills, experience, stats } from "@/lib/data";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -67,6 +67,33 @@ function RotatingBadge() {
   );
 }
 
+function Preloader() {
+  const [done, setDone] = useState(false);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    if (reduce) { setDone(true); return; }
+    const t = setTimeout(() => setDone(true), 1300); // let the bar fill, then the curtain lifts
+    return () => clearTimeout(t);
+  }, [reduce]);
+
+  return (
+    <AnimatePresence>
+      {!done && (
+        <motion.div className="v3-loader" exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: EASE }}>
+          <div className="v3-spin-wrap">
+            <span className="v3-pulse" />
+            <span className="v3-pulse d" />
+            <span className="v3-pulse d2" />
+            <span className="v3-spin" />
+            <span className="v3-spin inner" />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function ThemeToggle({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
   return (
     <button className="v3-toggle" onClick={onToggle} aria-label="Toggle theme" aria-pressed={dark}>
@@ -93,6 +120,7 @@ export default function V3() {
 
   return (
     <div className="v3" data-theme={dark ? "dark" : "light"}>
+      <Preloader />
       <div className="v3-grid" aria-hidden />
 
       {/* nav */}
@@ -143,7 +171,7 @@ export default function V3() {
         </h1>
         <div className="v3-hero-foot">
           <motion.p className="v3-lead" {...enter(reduce, 0.4)}>
-            Two years turning Figma into fast, scalable products across e-commerce and SaaS. React, Next.js, and the MERN stack on the front, Node, PHP, and Symfony on the back, plus deep Shopify work.
+            Three years turning Figma into fast, scalable products across e-commerce and SaaS. React, Next.js, and the MERN stack on the front, Node, PHP, and Symfony on the back, plus deep Shopify work.
           </motion.p>
           <RotatingBadge />
         </div>
@@ -182,7 +210,7 @@ export default function V3() {
           <motion.div className="v3-preview" style={{ x: sx, y: sy, opacity: hovered !== null && !reduce ? 1 : 0 }} aria-hidden>
             {hovered !== null && (
               /* eslint-disable-next-line @next/next/no-img-element */
-              <img src={`https://picsum.photos/seed/${projects[hovered].seed}/600/440`} alt="" />
+              <img src={`/work/${projects[hovered].seed}.jpg`} alt="" />
             )}
           </motion.div>
         </div>
@@ -291,6 +319,7 @@ export default function V3() {
           --line: rgba(240,235,223,0.08); --card: #1d1a18;
         }
         .v3 ::selection { background: var(--accent); color: var(--paper); }
+
         .v3 a { color: inherit; text-decoration: none; }
         .v3-grid {
           position: fixed; inset: 0; z-index: 0; pointer-events: none;
@@ -299,6 +328,16 @@ export default function V3() {
         }
         .v3 > *:not(.v3-grid) { position: relative; z-index: 1; }
         .v3 header.v3-nav { z-index: 50; } /* beat the :not() rule (specificity 0,2,0) so the open menu sits over the hero */
+        /* intro loader: minimal cream spinner + radar pulse rings on a cherry field, fades into the site (high specificity beats the :not() rule) */
+        .v3 div.v3-loader { position: fixed; inset: 0; z-index: 1000; background: var(--accent); display: flex; align-items: center; justify-content: center; }
+        .v3-spin-wrap { position: relative; display: grid; place-items: center; width: clamp(60px,10vw,76px); height: clamp(60px,10vw,76px); }
+        .v3-spin { position: absolute; width: clamp(56px,9vw,72px); height: clamp(56px,9vw,72px); border-radius: 50%; border: 2.5px solid rgba(239,233,220,0.2); border-top-color: var(--paper); animation: v3rot 0.95s linear infinite; }
+        .v3-spin.inner { width: 56%; height: 56%; border-width: 2px; border-top-color: transparent; border-bottom-color: var(--paper); animation: v3rot 0.7s linear infinite reverse; }
+        .v3-pulse { position: absolute; width: clamp(56px,9vw,72px); height: clamp(56px,9vw,72px); border-radius: 50%; border: 1.5px solid rgba(239,233,220,0.5); animation: v3pulse 1.9s ease-out infinite; }
+        .v3-pulse.d { animation-delay: 0.63s; }
+        .v3-pulse.d2 { animation-delay: 1.26s; }
+        @keyframes v3rot { to { transform: rotate(360deg); } }
+        @keyframes v3pulse { 0% { transform: scale(0.75); opacity: 0.65; } 100% { transform: scale(2.9); opacity: 0; } }
 
         .v3-nav { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 22px clamp(20px,5vw,72px); backdrop-filter: blur(6px); z-index: 20; }
         .v3-word { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }

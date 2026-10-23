@@ -1,55 +1,18 @@
 @import "tailwindcss";
 
-/* ============================================================
-   Cinematic Architect — tokens (noir + cherry, single accent)
-   ============================================================ */
+/* Font vars: next/font sets --font-space/manrope/jet on <html>; the page reads these. */
 :root {
-  --cherry-red: #810100;
-  --cherry-bright: #a30202;
-  --maroon: #630000;
-  --noir-black: #1b1717;
-  --noir-deep: #0f0c0c;
-  --noir-soft: #161212;
-  --cotton: #edebdd;
-  --cotton-dim: #c9c5b4;
-  --cotton-faint: #8a8676;
-  --bone: #f5f2e5;
-
-  --surface-lowest: #0b0808;
-  --surface-low: #1f1a1a;
-  --surface: #251f1f;
-  --surface-high: #2d2626;
-  --surface-highest: #362e2e;
-
-  --status-success: #5c7a4b;
-
-  --glass-bg: rgba(18, 14, 14, 0.62);
-  --gradient-cherry: radial-gradient(120% 80% at 30% 20%, #a30202 0%, #810100 42%, #4a0000 100%);
-
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-arch: cubic-bezier(0.2, 0.7, 0.1, 1);
-
   --font-display: var(--font-space), "Space Grotesk", system-ui, sans-serif;
   --font-body: var(--font-manrope), "Manrope", system-ui, sans-serif;
   --font-mono: var(--font-jet), "JetBrains Mono", ui-monospace, monospace;
 }
 
-@theme inline {
-  --color-noir: var(--noir-soft);
-  --color-cherry: var(--cherry-red);
-  --color-cotton: var(--cotton);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
-}
-
-* { box-sizing: border-box; }
-
 html {
-  background: #efe9dc; /* paper — matches the site's light default so overscroll never flashes dark */
+  background: #efe9dc; /* paper — matches the light default so overscroll never flashes */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
 /* Lenis drives scrolling; keep native smooth off to avoid double-easing. */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -63,104 +26,4 @@ body {
   font-size: 16px;
   line-height: 1.55;
   overflow-x: clip;
-}
-
-a { color: inherit; text-decoration: none; }
-
-.font-display { font-family: var(--font-display); }
-.font-mono { font-family: var(--font-mono); }
-
-/* ---------- Fixed overlays ---------- */
-#grain {
-  position: fixed; inset: 0; z-index: 90; pointer-events: none;
-  opacity: 0.045; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-#cursor-glow {
-  position: fixed; top: 0; left: 0; width: 560px; height: 560px; z-index: 80;
-  margin: -280px 0 0 -280px; border-radius: 9999px;
-  pointer-events: none; opacity: 0; mix-blend-mode: screen;
-  background: radial-gradient(circle, rgba(129,1,0,0.22), rgba(129,1,0,0.05) 44%, transparent 68%);
-  transform: translate3d(-9999px, -9999px, 0);
-  transition: opacity 0.5s var(--ease);
-  will-change: transform;
-}
-
-/* ---------- Eyebrow ---------- */
-.eyebrow {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--cotton-faint);
-  display: inline-flex; align-items: center; gap: 12px;
-}
-.eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--cherry-red); }
-
-/* ---------- Section shell ---------- */
-.section { position: relative; padding: clamp(96px, 14vh, 180px) clamp(20px, 5vw, 96px); max-width: 1480px; margin: 0 auto; }
-.section-head h2 {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(2.4rem, 7vw, 5rem); letter-spacing: -0.03em; line-height: 0.98;
-  margin: 18px 0 0; text-wrap: balance;
-}
-.ghost {
-  color: transparent; -webkit-text-stroke: 1px var(--surface-high);
-  font-family: var(--font-display); font-weight: 700; pointer-events: none; user-select: none;
-}
-
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-  height: 56px; padding: 0 28px; border: 0; cursor: pointer;
-  font-family: var(--font-body); font-weight: 600; font-size: 14px; line-height: 1;
-  border-radius: 9999px; position: relative; isolation: isolate; overflow: hidden;
-  transition: color 0.4s var(--ease);
-}
-.btn .btn-ic {
-  width: 30px; height: 30px; border-radius: 9999px; display: inline-flex;
-  align-items: center; justify-content: center; flex-shrink: 0;
-  transition: transform 0.4s var(--ease);
-}
-.btn:hover .btn-ic { transform: translate(3px, -3px); }
-.btn-primary { background: var(--cherry-red); color: var(--cotton); }
-.btn-primary .btn-ic { background: rgba(255,255,255,0.14); }
-.btn-primary::after {
-  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--cherry-bright);
-  transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease);
-}
-.btn-primary:hover::after { transform: scaleX(1); }
-.btn-ghost { background: transparent; color: var(--cotton); box-shadow: inset 0 0 0 1px rgba(237,235,221,0.18); }
-.btn-ghost .btn-ic { background: rgba(237,235,221,0.08); }
-.btn-ghost:hover { box-shadow: inset 0 0 0 1px var(--cherry-red); }
-.btn-premium { background: var(--gradient-cherry); color: var(--cotton); }
-.btn-premium .btn-ic { background: rgba(255,255,255,0.16); }
-.btn:active { transform: scale(0.97); }
-.btn:focus-visible { outline: 2px solid var(--cherry-red); outline-offset: 3px; }
-
-/* ---------- Tags ---------- */
-.tag {
-  font-family: var(--font-mono); font-size: 11px; color: var(--cotton-dim);
-  background: var(--surface-lowest); padding: 7px 13px; letter-spacing: 0.02em; white-space: nowrap;
-  transition: color 0.3s var(--ease), background 0.3s var(--ease);
-}
-
-/* ---------- Reveal (Motion handles most; this is CSS fallback) ---------- */
-.char, .word { display: inline-block; will-change: transform; }
-.line-inner { display: block; }
-
-/* ---------- Scroll progress ---------- */
-#top-progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--cherry-red); transform: scaleX(0); transform-origin: left; z-index: 100; }
-
-/* ---------- Marquee ---------- */
-.marquee { overflow: hidden; white-space: nowrap; }
-.marquee-track { display: inline-flex; width: max-content; }
-.mq-ghost { color: transparent; -webkit-text-stroke: 1.2px var(--cotton-dim); }
-
-/* ---------- Focus ring default ---------- */
-a:focus-visible { outline: 2px solid var(--cherry-red); outline-offset: 3px; }
-
-@media (prefers-reduced-motion: reduce) {
-  #cursor-glow { display: none !important; }
-  * { scroll-behavior: auto !important; }
-}
-@media (hover: none) {
-  #cursor-glow { display: none; }
 }

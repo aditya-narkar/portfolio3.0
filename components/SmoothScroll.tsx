@@ -2,27 +2,21 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    gsap.registerPlugin(ScrollTrigger);
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true, wheelMultiplier: 1 });
-
-    lenis.on("scroll", ScrollTrigger.update);
-    const raf = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
-
-    // let late-mounting pinned sections measure correctly
-    const t = setTimeout(() => ScrollTrigger.refresh(), 400);
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    let raf = 0;
+    const loop = (time: number) => {
+      lenis.raf(time); // rAF already passes a ms timestamp
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
 
     return () => {
-      clearTimeout(t);
-      gsap.ticker.remove(raf);
+      cancelAnimationFrame(raf);
       lenis.destroy();
     };
   }, []);

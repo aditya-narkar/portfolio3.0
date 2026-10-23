@@ -112,8 +112,8 @@ export const skills = [
 ];
 
 export const stats = [
-  { value: 2, suffix: "+", label: "Years experience", accent: true },
-  { value: 6, suffix: "", label: "Products shipped" },
+  { value: 3, suffix: "+", label: "Years experience", accent: true },
+  { value: 6, suffix: "+", label: "Products shipped" },
   { value: 30, suffix: "%", label: "Perf gains" },
   { value: 2, suffix: "", label: "Companies", accent: true },
 ];
